@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:maverl_app/podo/Hero.dart';
+import 'package:maverl_app/screens/details.dart';
 import 'package:maverl_app/screens/home.dart';
 
 void main() {
@@ -35,7 +37,10 @@ class RouteGenerator {
       case '/':
         return MaterialPageRoute(builder: (context) => Home());
       case '/detail':
-        return MaterialPageRoute(builder: (context) => Home());
+        return MaterialPageRoute(
+            settings: settings,
+            builder: (context) =>
+                DetailPage(hero: settings.arguments as Heros));
       default:
         return MaterialPageRoute(
             builder: (context) => Scaffold(

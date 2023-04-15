@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../podo/Hero.dart';
+import '../screens/details.dart';
 import 'hero_avatar.dart';
 
 
@@ -16,15 +17,13 @@ class SuperHero extends StatelessWidget {
     TextTheme textTheme = Theme.of(context).textTheme;
 
     return InkWell(
-      // onTap: () {
-      //   var router = new MaterialPageRoute(builder: (BuildContext context) {
-      //     return Details(
-      //       hero: hero,
-      //     );
-      //   });
-
-      //   Navigator.of(context).push(router);
-      // },
+      onTap: () {
+        Navigator.pushNamed(
+          context,
+          '/detail',
+          arguments: hero,
+        );
+      },
       child: Card(
         clipBehavior: Clip.antiAlias,
         shape: RoundedRectangleBorder(
