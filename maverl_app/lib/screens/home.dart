@@ -16,16 +16,15 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  late List HeroList;
+  List HeroList = [];
   int page = 0;
-  bool _loading = false;
+  bool _loading = true;
   bool load = false;
   ScrollController scrollController = ScrollController();
 
   getHeroes(pages) async {
     setState(() {
-      //_loading = true;
-      HeroList = [];
+      load = true;
     });
     var offset = (pages * 20);
     String publicKey = 'b02901689df5ddca914b5fc1f2fd91cf';
@@ -35,7 +34,6 @@ class _HomeState extends State<Home> {
 
     final hash =
         md5.convert(utf8.encode('$timestamp$privateKey$publicKey')).toString();
-    var url = '$apiUrl?apikey=$publicKey&ts=$timestamp&hash=$hash&offset=100';
 
     Map<String, dynamic> queryParameters = {
       "apikey": publicKey,
@@ -49,7 +47,7 @@ class _HomeState extends State<Home> {
     final decodedJson = jsonDecode(res.body);
     final List<dynamic> characterData = decodedJson['data']['results'];
     int code = res.statusCode;
-    HeroList = HeroList + characterData;
+    HeroList.addAll(characterData);
     int p = page + 1;
     if (code == 200) {
       setState(() {

@@ -19,14 +19,13 @@ class App extends StatelessWidget {
       onGenerateRoute: ((settings) => RouteGenerator.generateRoute(settings)),
       title: 'Hero App',
       theme: ThemeData(
-        primarySwatch: Colors.grey,
+        primarySwatch: Colors.blue,
         inputDecorationTheme: const InputDecorationTheme(
           focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(width: 1, color: Colors.red),
+            borderSide: BorderSide(width: 1, color: Colors.black),
           ),
         ),
       ),
-      //home: LandingPage(),
     );
   }
 }
@@ -44,8 +43,8 @@ class RouteGenerator {
       default:
         return MaterialPageRoute(
             builder: (context) => Scaffold(
-                appBar: AppBar(title: Text('Error'), centerTitle: true),
-                body: Center(
+                appBar: AppBar(title: const Text('Error'), centerTitle: true),
+                body: const Center(
                   child: Text('Page not found'),
                 )));
     }

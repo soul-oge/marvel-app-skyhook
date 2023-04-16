@@ -2,7 +2,7 @@ class Heros {
   late int id;
   late String name;
   late String thumbnailUrl;
-  late String description;
+  String description = "No Description";
   Heros(
       {required this.id,
       required this.name,
@@ -14,6 +14,8 @@ class Heros {
     name = json['name'];
     thumbnailUrl =
         json['thumbnail']['path'] + '.' + json['thumbnail']['extension'];
-    description = json['description'];
+    if (json['description'] != "") {
+      description = json['description'];
+    }
   }
 }
